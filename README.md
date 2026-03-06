@@ -1,1 +1,1 @@
-Project-live-link:- https://gitub-tracker-issues.netlify.app/tracker.html
+Project-live-link:- https://gitub-tracker-issues.netlify.app/
