@@ -51,12 +51,90 @@
     />
   </head>
 
-  <body>
-    <h1 class="text-xl font-bold text-center mt-10">
-      Assignment 5 - Github Issue Tracker
-    </h1>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-96">
+      <!-- Logo + Title -->
+      <div class="flex flex-col items-center gap-6 mb-10">
+        <img
+          class="w-24 h-24"
+          src="./assets/github-logo.png"
+          alt="GitHub Logo"
+        />
 
-    <!-- JS File -->
+        <div>
+          <h2 class="text-2xl font-semibold text-center">
+            GitHub Issues Tracker
+          </h2>
+          <p class="text-gray-600 text-sm text-center">
+            Sign in to manage your issues
+          </p>
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <form class="space-y-4">
+        <!-- Username -->
+        <div>
+          <label
+            for="username"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Username
+          </label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            value="admin"
+            placeholder="Enter your username"
+            autocomplete="username"
+            required
+            class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label
+            for="password"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Password
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            value="admin123"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+            class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Login Button -->
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 mt-2 rounded-md hover:bg-blue-700 transition font-medium"
+        >
+          Login
+        </button>
+      </form>
+
+      <!-- Demo Credentials -->
+      <div class="mt-6 text-center">
+        <p class="text-gray-600 text-sm mb-6">Demo Credentials:</p>
+        <p class="font-bold">
+          Username: <span class="font-normal">admin</span>
+        </p>
+        <p class="font-bold">
+          Password: <span class="font-normal">admin123</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- JS -->
     <script src="./app.js"></script>
   </body>
 </html>
