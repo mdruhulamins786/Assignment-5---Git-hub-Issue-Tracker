@@ -54,7 +54,9 @@
   <body>
     <div class="max-w-[77.5rem] sm:mx-5 mx-6 lg:mx-auto">
       <!-- Header -->
-      <div class="navbar flex gap-3 flex-col items-start justify-between md:flex-row bg-base-100 shadow-sm mb-8">
+      <div
+        class="navbar flex gap-3 flex-col items-start justify-between md:flex-row bg-base-100 shadow-sm mb-8"
+      >
         <div class="">
           <a class="btn btn-ghost text-xl">
             <img
@@ -75,6 +77,44 @@
             <button class="btn btn-ghost btn-circle">
               <i class="fas fa-plus"></i>
             </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- filter items -->
+      <div id="filter-items" class="flex flex-wrap gap-4 mb-6 shadow-md p-4">
+        <button
+          class="btn btn-sm bg-primary/30 text-primary rounded-full border-primary"
+          data-value="All"
+        >
+          All
+        </button>
+        <button
+          class="btn btn-sm bg-green-200 text-green-700 rounded-full border-green-300"
+          data-value="Open"
+        >
+          Open
+        </button>
+        <button
+          class="btn btn-sm bg-red-200 text-red-700 rounded-full border-red-300"
+          data-value="Closed"
+        >
+          Closed
+        </button>
+      </div>
+
+      <!-- count items -->
+
+      <div class="shadow-md p-4 mb-6">
+        <div>
+          <div class="flex items-center gap-4">
+            <img src="./assets/Aperture.png" alt="" />
+            <div>
+              <h5 class="font-semibold text-lg">50 Issues</h5>
+              <p class="text-gray-400 font-sm">
+                Track and manage your project issues
+              </p>
+            </div>
           </div>
         </div>
       </div>
