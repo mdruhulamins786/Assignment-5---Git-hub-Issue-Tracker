@@ -1,5 +1,3 @@
-
-
 const trackerItems = document.getElementById("tracker-items");
 
 // Priority → DaisyUI color
@@ -10,9 +8,33 @@ const getPriorityColor = (priority) => {
   return "success"; // green
 };
 
+// Filter issues based on status
+const allBtn = document.getElementById("all");
+const openBtn = document.getElementById("open");
+const closedBtn = document.getElementById("closed");
+const issueCount = document.getElementById("issue-count");
+
+// Event listeners for filter buttons
+allBtn.addEventListener("click", () => {
+  initTracker();
+});
+
+openBtn.addEventListener("click", async () => {
+  const data = await trackerFetchData();
+  const filteredData = data.filter((item) => item.status === "open");
+  renderIssues(filteredData);
+});
+
+closedBtn.addEventListener("click", async () => {
+  const data = await trackerFetchData();
+  const filteredData = data.filter((item) => item.status === "closed");
+  renderIssues(filteredData);
+});
+
 // Render issues
 const renderIssues = (data) => {
   if (!trackerItems) return;
+  issueCount.textContent = data.length || 0;
 
   if (!data.length) {
     trackerItems.innerHTML = `<p class="text-center text-gray-500">No issues found</p>`;
