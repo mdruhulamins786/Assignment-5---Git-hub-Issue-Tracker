@@ -96,9 +96,9 @@ let issuesData = [];
 // Priority → DaisyUI color
 const getPriorityColor = (priority) => {
   const p = priority?.toLowerCase();
-  if (p === "high") return "error";
+  if (p === "high") return "success";
   if (p === "medium") return "warning";
-  return "success";
+  return "error";
 };
 
 // Priority → DaisyUI color
