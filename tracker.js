@@ -31,29 +31,20 @@ const openModal = (id) => {
   div.innerHTML = `
     <dialog id="issue_modal" class="modal">
       <div class="modal-box">
-
-        <div class="p-4 shadow-md rounded-md border-t-4 border-${color}">
-          
-          <div class="flex py-3 flex-wrap items-center justify-between">
-            <img
-              class="w-10 h-10"
-              src="${
-                status === "open"
-                  ? "./assets/Open-Status.png"
-                  : "./assets/Closed-Status.png"
-              }"
-              alt="${status}"
-            />
-
-            <button class="btn btn-sm bg-${color}/30 text-${color} rounded-full border border-${color}">
-              ${priority}
-            </button>
-          </div>
-
+        <div class="p-4">
           <h3 class="text-2xl font-semibold mt-2">${title}</h3>
-          <p class="text-gray-400 mt-2 mb-4">${description}</p>
-
-          <div class="flex flex-wrap gap-2 mb-2">
+          <p class="flex items-center gap-4 mt-3">
+            <span class="btn btn-sm bg-${color}/30 text-${color} rounded-full border border-${color}">
+              ${status}
+            </span> -
+            <span>${author}</span> -
+            <span>${
+              createdAt
+                ? new Date(createdAt).toLocaleDateString()
+                : "Unknown date"
+            }</span>
+          </p>
+          <div class="flex flex-wrap gap-2 my-5">
             ${
               labels.length
                 ? labels
@@ -65,20 +56,18 @@ const openModal = (id) => {
                 : `<span class="text-gray-400 text-sm">No labels</span>`
             }
           </div>
-
-          <hr class="my-4 text-gray-300" />
-
-          <div class="flex flex-col gap-1 text-gray-400 text-sm">
-            <p>#${id} by ${author}</p>
-            <p>${
-              createdAt
-                ? new Date(createdAt).toLocaleDateString()
-                : "Unknown date"
-            }</p>
+           <p class="text-gray-400 mt-2 mb-4">${description}</p>
+          <div class="flex flex-wrap gap-1 text-gray-400 text-sm items-center">
+           <div class="flex-1">
+             <p>Author</p>
+             <p class="font-semibold text-md text-black mt-1">${author}</p>
+           </div>
+           <div class="flex-1">
+             <p>priority</p>
+             <p class="badge mt-2 bg-gray-100 text-gray-700 rounded-full border border-gray-300">${priority}</p>
+           </div>
           </div>
-
         </div>
-
         <div class="modal-action">
           <form method="dialog">
             <button class="btn">Close</button>
@@ -112,6 +101,13 @@ const getPriorityColor = (priority) => {
   return "success";
 };
 
+// Priority → DaisyUI color
+const getBorderColor = (priority) => {
+  const p = priority?.toLowerCase();
+  if (p === "open") return "success";
+  return "error";
+};
+
 // Render issues
 const renderIssues = (data) => {
   issueCount.textContent = data.length || 0;
@@ -134,9 +130,10 @@ const renderIssues = (data) => {
         labels,
       } = item;
       const color = getPriorityColor(priority);
+      const borderColor = getBorderColor(status);
 
       return `
-      <div class="p-4 shadow-md rounded-md border-t-4 border-${color} cursor-pointer" onclick="openModal(${id})">
+      <div class="p-4 shadow-md rounded-md border-t-4 border-${borderColor} cursor-pointer" onclick="openModal(${id})">
       
         <div class="flex py-3 flex-wrap items-center justify-between">
           <img
